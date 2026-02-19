@@ -209,6 +209,13 @@ function App() {
               </div>
             ))}
           </div>
+          <p className="skills__note reveal reveal--delay-3">
+            Every skill works on its own. Run <code>/cothought:zettelkasten</code> by
+            itself to brainstorm, or <code>/cothought:review</code> without ever
+            journaling. But they layer together — the journal loads zettelkasten rules
+            automatically, the review reads history tables the zettelkasten created, and
+            the metamap ties everything into one picture. Use one or use all eight.
+          </p>
         </div>
       </section>
 

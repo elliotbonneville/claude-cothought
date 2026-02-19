@@ -299,6 +299,14 @@ section {
   color: var(--ink-light);
 }
 
+.skills__note {
+  margin-top: var(--space-md);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink-light);
+  max-width: 600px;
+}
+
 @media (min-width: 640px) {
   .skills__grid {
     grid-template-columns: 1fr 1fr;
