@@ -1,5 +1,5 @@
 ---
-name: project
+name: cothought:project
 description: Capture, document, and research a new project idea. Use when the user has a project idea to explore — creates a research note, does web research, and links it in projects.md. Does NOT create a repo (use /cothought:begin-project for that).
 allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Task
 ---

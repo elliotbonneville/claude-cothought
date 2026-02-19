@@ -1,5 +1,5 @@
 ---
-name: zettelkasten
+name: cothought:zettelkasten
 description: Zettelkasten brainstorming and research. Use when the user wants to explore ideas, brainstorm, research a topic, or build out their note network. Creates and links notes in the journal directory.
 allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Task
 ---

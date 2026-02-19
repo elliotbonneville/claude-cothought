@@ -1,5 +1,5 @@
 ---
-name: voice
+name: cothought:voice
 description: Write like a human, not a machine. Load this skill when writing anything that needs to sound real — blog posts, copy, emails, manifestos, fiction. Fights AI voice at every level.
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---

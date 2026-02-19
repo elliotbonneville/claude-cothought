@@ -1,5 +1,5 @@
 ---
-name: review
+name: cothought:review
 description: Review recent journal entries. Use when the user wants to reflect on their week, review progress, see patterns across entries, or check in on their plan. Also triggered by "weekly review", "how's the week been", "what have I been writing about".
 allowed-tools: Read, Glob, Grep, Write, Edit, Bash(date *)
 argument-hint: "[days back, default 7]"

@@ -1,5 +1,5 @@
 ---
-name: journal
+name: cothought:journal
 description: Daily voice journal session. Use when the user wants to journal, dictate thoughts, talk through their day, or just think out loud. Captures their words verbatim in a dated markdown file.
 allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Task, Bash(date *), Bash(git *)
 ---

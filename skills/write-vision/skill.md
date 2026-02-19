@@ -1,5 +1,5 @@
 ---
-name: write-vision
+name: cothought:write-vision
 description: Create your vision — a collection of vivid "example day" passages describing the life you're building toward. Use during first-run setup or anytime you want to add a new vision passage.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(mkdir *)
 ---

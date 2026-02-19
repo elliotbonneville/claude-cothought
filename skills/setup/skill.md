@@ -1,5 +1,5 @@
 ---
-name: setup
+name: cothought:setup
 description: First-run configuration for Cothought. Creates ~/.claude/cothought.json and optionally seeds your notes directory with a metamap template.
 allowed-tools: Read, Write, Edit, Glob, Task, Bash(ls *), Bash(cp *)
 ---

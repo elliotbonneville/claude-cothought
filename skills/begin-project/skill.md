@@ -1,5 +1,5 @@
 ---
-name: begin-project
+name: cothought:begin-project
 description: Spin up a GitHub repo from a project idea note. Use when the user says "begin project", "spin up a project", "start a new repo", or wants to turn a project idea into a working repository.
 allowed-tools: Read, Write, Edit, Glob, Bash(mkdir *), Bash(cd *), Bash(git *), Bash(cp *), Bash(ls *), Bash(gh *), Bash(mv *)
 ---
