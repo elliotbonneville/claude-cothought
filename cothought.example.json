@@ -1,0 +1,23 @@
+{
+  "notes_dir": "/path/to/your/notes/",
+  "dev_dir": "~/dev",
+  "dev_categories": ["apps", "games", "tools", "libs"],
+  "reference_files": {
+    "vision": "vision/main.md",
+    "plan": "90-day-plan.md",
+    "hooks": "hooks.md",
+    "blog_ideas": "blog ideas.md"
+  },
+  "review": {
+    "foundations": [
+      { "name": "Sleep", "keywords": ["bedtime", "sleep", "energy", "waking"] },
+      { "name": "Exercise", "keywords": ["gym", "run", "strength", "workout"] },
+      { "name": "Writing", "keywords": ["novel", "chapter", "writing", "draft"] },
+      { "name": "Finances", "keywords": ["budget", "savings", "investing", "debt"] }
+    ]
+  },
+  "metamap": {
+    "ifs_enabled": true,
+    "parts": []
+  }
+}

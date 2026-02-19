@@ -1,0 +1,13 @@
+{
+  "name": "cothought",
+  "version": "0.1.0",
+  "description": "A thinking system for Claude Code — journal, zettelkasten, review, project scaffolding, and a living self-model called the metamap.",
+  "author": {
+    "name": "Elliot Bonneville",
+    "url": "https://elliotbonneville.com"
+  },
+  "repository": "https://github.com/elliotbonneville/claude-cothought",
+  "license": "MIT",
+  "keywords": ["journal", "zettelkasten", "review", "notes", "metamap", "thinking"],
+  "skills": "./skills/"
+}
