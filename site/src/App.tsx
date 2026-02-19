@@ -163,9 +163,9 @@ function App() {
               <div className="install__step-content">
                 <h3>Install the plugin</h3>
                 <p>
-                  In Claude Code, open the marketplace and add a custom plugin.
-                  Paste <code>elliotbonneville/claude-cothought</code> as the source
-                  and enable it.
+                  In Claude Code, run <code>/plugins</code> and add a custom marketplace
+                  with the URL <code>elliotbonneville/claude-cothought</code>. Then
+                  install the cothought plugin from that marketplace.
                 </p>
               </div>
             </div>

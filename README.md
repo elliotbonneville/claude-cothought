@@ -8,7 +8,7 @@ The name is a nod to the ancient *hypomnema* (ὑπόμνημα, *hype-OM-neh-ma
 
 ## Quick start
 
-In Claude Code, open the marketplace, add a custom plugin, and paste `elliotbonneville/claude-cothought` as the source. Enable the plugin and restart Claude Code.
+In Claude Code, run `/plugins` and add a custom marketplace with the URL `elliotbonneville/claude-cothought`. Then install the cothought plugin from that marketplace.
 
 Then run `/cothought:setup` to create your config. It asks where your notes live, helps you pick a voice dictation tool, and you're done. Run `/cothought:journal` to start your first session.
 
