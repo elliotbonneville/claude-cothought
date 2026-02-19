@@ -12,7 +12,17 @@ Interactive first-run configuration for Cothought. This creates the config file 
 
 First, check if `~/.claude/cothought.json` already exists. If it does, read it and ask the user if they want to reconfigure or just update specific values. Don't overwrite without confirmation.
 
-## Simple setup (default)
+## Choose setup mode
+
+Unless the user already passed `advanced` as an argument, ask upfront:
+
+"Two ways to set up: **quick** gets you journaling in under a minute — just your notes folder and a dictation tool. **Full setup** also configures weekly review foundations, metamap options, and a vision exercise. Which do you want?"
+
+- If they pick quick, run the simple setup below.
+- If they pick full, run simple setup first, then continue into advanced setup.
+- If `$ARGUMENTS` contains "advanced", skip the question and run both.
+
+## Simple setup
 
 Get the user journaling as fast as possible. Ask only what's essential.
 
