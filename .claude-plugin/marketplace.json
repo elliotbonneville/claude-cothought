@@ -5,13 +5,12 @@
   },
   "metadata": {
     "description": "Cothought thinking system",
-    "version": "1.0.0",
-    "pluginRoot": ".."
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "cothought",
-      "source": ".",
+      "source": "./",
       "description": "A thinking system — journal, zettelkasten, review, project scaffolding, and a living self-model.",
       "version": "0.1.0"
     }
