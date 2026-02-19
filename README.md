@@ -1,41 +1,33 @@
-```
-                    ┌───────────────────────────────────┐
-                    │                                   │
-                    │          COTHOUGHT                │
-                    │                                   │
-                    │   thinking with, not thinking at  │
-                    │                                   │
-                    └───────────────┬───────────────────┘
-                                    │
-                    ┌───────────────┼───────────────┐
-                    │               │               │
-               ┌────▼────┐    ┌────▼────┐    ┌────▼────┐
-               │ journal │    │  zett.  │    │ review  │
-               │         │◄──►│         │◄──►│         │
-               └────┬────┘    └────┬────┘    └─────────┘
-                    │              │
-                    ▼              ▼
-              ┌──────────┐  ┌──────────┐
-              │ metamap  │  │  notes   │
-              │ ◉ stories│  │ ◉──◉──◉ │
-              │ ◉ threads│  │ │╲ │ ╱│ │
-              │ ◉ patterns  │ ◉──◉──◉ │
-              └──────────┘  └──────────┘
-```
-
 # Cothought
 
-An AI-assisted thinking system, inspired by the ancient practice of the *hypomnema* (ὑπόμνημα, *hype-OM-neh-mah*): personal notebooks the Stoics and Epicureans used for self-examination. They compiled fragments from readings, conversations, and reflections into a "book of life." Not a diary. Not confession. A structured tool for self-formation.
+A Claude Code plugin that turns a plain markdown folder into a thinking system. You journal by voice, and the AI captures your words verbatim, links ideas into a zettelkasten note network, and maintains a living self-model called the metamap. Over time, it builds a picture of who you are, what you're working through, and what patterns keep showing up. Then it uses that picture to ask better questions.
 
-Foucault described them as capturing "the already said, to collect what one has managed to hear or read, and for a purpose that is nothing less than the shaping of the self."
-
-Marcus Aurelius kept one. This is the version where the notebook thinks back.
+The name is a nod to the ancient *hypomnema* (ὑπόμνημα, *hype-OM-neh-mah*), personal notebooks the Stoics and Epicureans kept for self-examination. They compiled fragments from readings, conversations, and daily life into a structured tool for self-formation. Foucault described them as capturing "the already said, to collect what one has managed to hear or read, and for a purpose that is nothing less than the shaping of the self." Marcus Aurelius kept one. Seneca kept one. This is the version where the notebook thinks back.
 
 [Wikipedia: Hypomnema](https://en.wikipedia.org/wiki/Hypomnema) · [Foucault: "Self Writing"](https://foucault.info/documents/foucault.hypomnemata.en/)
 
----
+## Quick start
 
-A Claude Code plugin that turns a plain markdown folder into a thinking system. Journal capture, zettelkasten note network, weekly review, project scaffolding, and a living self-model called the metamap.
+Add this repo as a Claude Code plugin marketplace, then enable the plugin:
+
+```jsonc
+// ~/.claude/settings.json
+{
+  "enabledPlugins": {
+    "cothought@cothought": true
+  },
+  "extraKnownMarketplaces": {
+    "cothought": {
+      "source": {
+        "source": "github",
+        "repo": "elliotbonneville/claude-cothought"
+      }
+    }
+  }
+}
+```
+
+Restart Claude Code, then run `/setup` to create your config file interactively. It walks you through setting your notes directory, review foundations, and optional features. After that, run `/journal` to start your first session.
 
 ## What's in the box
 
@@ -52,7 +44,7 @@ Eight skills that work together:
 
 ## The metamap
 
-The most distinctive piece. A living self-model stored in `metamap.md` that the journal updates every session. It tracks:
+The most distinctive piece. A living self-model stored in `metamap.md` that the journal skill updates every session. It draws on research from narrative therapy, CBT, IFS, and reflective practice to maintain a structured picture of who you are right now. It tracks:
 
 - **Who you are right now** — one paragraph, updated constantly. Includes a "chapter title" (from Dan McAdams' narrative identity research).
 - **Dominant stories & counter-evidence** — the things you believe about yourself ("I never finish anything") alongside dated evidence for and against. Over time, the counter-evidence loosens the story's grip. This is the therapeutic core, drawn from Michael White's narrative therapy.
@@ -60,37 +52,17 @@ The most distinctive piece. A living self-model stored in `metamap.md` that the 
 - **Breakthroughs & experiments** — insights paired with whether they were tested and what happened. Reflection without experimentation is rumination.
 - **Active threads, commitments, open questions, relationships, physical state correlations.**
 
+The metamap is not a journal summary. It's a compressed, actively maintained model that makes your own patterns visible to you. When you express a belief about yourself, the journal checks it against the evidence. When you make a commitment, it remembers. When a trigger chain plays out in real time, it can name the pattern.
+
 Research foundations are documented in [docs/metamap-research.md](docs/metamap-research.md).
-
-## Install
-
-Install as a Claude Code plugin:
-
-```bash
-claude plugin install --path /path/to/cothought
-```
-
-Or test locally without installing:
-
-```bash
-claude --plugin-dir /path/to/cothought
-```
-
-Then run `/setup` in Claude Code to create your config file interactively, or copy and edit the example:
-
-```bash
-cp /path/to/cothought/cothought.example.json ~/.claude/cothought.json
-```
-
-Once published to GitHub, install directly:
-
-```bash
-claude plugin install github:elliotbonneville/claude-cothought
-```
 
 ## Config
 
-All skills read `~/.claude/cothought.json` at invocation. No build step, no template variables. The config has:
+All skills read `~/.claude/cothought.json` at invocation. The `/setup` skill creates this interactively, or you can copy and edit the example:
+
+```bash
+cp cothought.example.json ~/.claude/cothought.json
+```
 
 ```json
 {
@@ -133,12 +105,6 @@ The skills reference each other and form a coherent system:
 - Project creates notes following zettelkasten conventions
 - Begin-project reads project notes and gathers related zettelkasten context
 - Voice loads alongside journal or any writing task
-
-## Updating
-
-```bash
-claude plugin update cothought
-```
 
 ## Adding personal skills
 
