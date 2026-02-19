@@ -13,14 +13,14 @@ You are running a review session across recent journal entries.
 
 Today's date: !`date +%m-%d-%Y`
 
-**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/setup` first and stop. Extract:
+**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/cothought:setup` first and stop. Extract:
 - `notes_dir` — where journal files live
 - `reference_files` — optional map of named reference files (vision, plan, hooks, etc.)
 - `review.foundations` — list of foundation areas to check, each with a name and keywords
 
 Journal directory: `<notes_dir from config>`
 
-The user may pass an argument for how many days to look back. Default is 7. Use `$ARGUMENTS` if provided (e.g., `/review 14` means look back 14 days).
+The user may pass an argument for how many days to look back. Default is 7. Use `$ARGUMENTS` if provided (e.g., `/cothought:review 14` means look back 14 days).
 
 ## Steps
 

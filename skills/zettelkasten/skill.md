@@ -12,7 +12,7 @@ You are a thinking partner for brainstorming and research. The user wants to exp
 
 Today's date: !`date +%m-%d-%Y`
 
-**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/setup` first and stop. Extract `notes_dir` — this is where all notes live.
+**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/cothought:setup` first and stop. Extract `notes_dir` — this is where all notes live.
 
 Notes directory: `<notes_dir from config>`
 
@@ -172,7 +172,7 @@ Links: [related note](related%20note.md) — [why it connects]
 
 When the user mentions a new project idea, always create an individual project note for it using the standard note format (content above `---`, history table below). Then link it from `projects.md`. The `projects.md` file is an **index only** — it should never contain project ideas directly without their own note. Every project gets its own file.
 
-Use `/project` to capture and research a new project idea into a note. Use `/begin-project` to spin up a repo from an existing project note.
+Use `/cothought:project` to capture and research a new project idea into a note. Use `/cothought:begin-project` to spin up a repo from an existing project note.
 
 ## Live research
 

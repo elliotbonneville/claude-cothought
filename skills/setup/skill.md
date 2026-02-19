@@ -1,7 +1,7 @@
 ---
 name: setup
 description: First-run configuration for Cothought. Creates ~/.claude/cothought.json and optionally seeds your notes directory with a metamap template.
-allowed-tools: Read, Write, Edit, Glob, Bash(ls *), Bash(cp *)
+allowed-tools: Read, Write, Edit, Glob, Task, Bash(ls *), Bash(cp *)
 ---
 
 # Setup
@@ -12,9 +12,9 @@ Interactive first-run configuration for Cothought. This creates the config file 
 
 First, check if `~/.claude/cothought.json` already exists. If it does, read it and ask the user if they want to reconfigure or just update specific values. Don't overwrite without confirmation.
 
-## Gather information
+## Simple setup (default)
 
-Walk the user through these questions one at a time. Keep it conversational, not like a form.
+Get the user journaling as fast as possible. Ask only what's essential.
 
 ### 1. Notes directory
 
@@ -24,23 +24,46 @@ Walk the user through these questions one at a time. Keep it conversational, not
 - Verify it exists with `ls`
 - If it doesn't exist, ask if they want to create it
 
-### 2. Dev directory (optional)
+### 2. Reference files (optional, quick)
 
-"Where do you keep your code projects? This is used by /begin-project to spin up new repos."
-
-- Default: `~/dev`
-- Ask for category subdirectories (e.g., apps, games, tools, libs)
-- Default categories: `["apps", "tools", "libs"]`
-
-### 3. Reference files (optional)
-
-"Do you have any special files in your notes directory that you want the journal and review skills to read for context? Things like a vision document, a plan, daily hooks, or a blog ideas list."
+"Do you have any files in your notes directory you'd want the journal to read for context? A vision document, a plan, daily hooks — anything like that. You can always add these later."
 
 - Each reference file has a name (key) and a path relative to the notes directory
-- Common ones: vision, plan, hooks, blog_ideas
 - All optional — skip if the user doesn't have any yet
+- Don't belabor this — one quick question, move on
 
-### 4. Review foundations (optional)
+### 3. Voice dictation
+
+"Cothought works best with voice dictation — you talk, it captures your words. What are you using for speech-to-text?"
+
+If they already have a setup (macOS Dictation, Whisper, Superwhisper, etc.), note it and move on.
+
+If they don't have one or aren't sure, spawn a background research agent (Task tool, subagent_type: general-purpose, run_in_background: true) to find the best current voice dictation options for their platform. While waiting, continue with the rest of setup. When results come back, suggest 2-3 good options:
+
+- **macOS built-in Dictation** — free, works everywhere, good enough to start. System Settings → Keyboard → Dictation.
+- **Wispr Flow** — popular voice-to-text app for Mac, designed for developers and writers.
+- Any other standout tools the research surfaces (Whisper-based apps, Superwhisper, etc.)
+
+The goal is to make sure they leave setup with a working dictation method, not just a config file.
+
+### 4. Done
+
+Write `~/.claude/cothought.json` with just the essentials:
+
+```json
+{
+  "notes_dir": "/Users/name/notes/",
+  "reference_files": {}
+}
+```
+
+Then offer: "That's it — you're ready to journal. Run `/cothought:journal` to start. If you want to configure review foundations, project directories, or other advanced settings, run `/cothought:setup advanced` anytime."
+
+## Advanced setup
+
+Triggered by `/cothought:setup advanced` or if the user asks for more options. Includes everything from simple setup plus:
+
+### Review foundations
 
 "When you do a weekly review, what areas of your life do you want to track? These are the 'foundations' — things like sleep, exercise, writing, finances. Each one gets a name and some keywords to search for in journal entries."
 
@@ -48,40 +71,18 @@ Walk the user through these questions one at a time. Keep it conversational, not
 - Default suggestion: Sleep, Exercise, Writing
 - The user can customize or skip entirely
 
-### 5. IFS / Parts tracking (optional)
+### Metamap options
 
-"The metamap can track internal 'parts' — voices or modes you notice in yourself, like 'the anxious part' or 'the maximizer.' This comes from Internal Family Systems (IFS) therapy. Want to enable this?"
+"The metamap can track IFS-style internal 'parts' — voices or modes you notice in yourself, like 'the anxious part' or 'the maximizer.' Want to enable this?"
 
 - If yes, ask them to name their parts (they can add more later)
 - If no or unsure, set `ifs_enabled: false`
 
+**Note:** Dev directory and project categories are NOT configured here. The `/cothought:project` and `/cothought:begin-project` skills handle their own onboarding the first time they're used.
+
 ## Write config
 
 After gathering all info, write `~/.claude/cothought.json` with the collected values. Show the user the final config and confirm before writing.
-
-Example output:
-
-```json
-{
-  "notes_dir": "/Users/name/notes/",
-  "dev_dir": "~/dev",
-  "dev_categories": ["apps", "tools", "libs"],
-  "reference_files": {
-    "vision": "vision/main.md",
-    "plan": "90-day-plan.md"
-  },
-  "review": {
-    "foundations": [
-      { "name": "Sleep", "keywords": ["bedtime", "sleep", "energy", "waking"] },
-      { "name": "Exercise", "keywords": ["gym", "run", "strength", "workout"] }
-    ]
-  },
-  "metamap": {
-    "ifs_enabled": false,
-    "parts": []
-  }
-}
-```
 
 ## Seed notes directory (optional)
 
@@ -94,16 +95,16 @@ If yes:
 
 ## Vision (optional)
 
-After the config and seed steps, ask: "One more thing — want to write your vision? This is a set of vivid 'example day' passages describing the life you're building toward. The journal and review skills use it for context, and you can read it back anytime with `/vision`. Takes about 10-15 minutes."
+After the config and seed steps, ask: "One more thing — want to write your vision? This is a set of vivid 'example day' passages describing the life you're building toward. The journal and review skills use it for context, and you can read it back anytime with `/cothought:vision`. Takes about 10-15 minutes."
 
-- If yes, tell them to run `/write-vision` — it walks through the whole process.
-- If no, that's fine. Mention they can do it anytime later with `/write-vision`.
+- If yes, tell them to run `/cothought:write-vision` — it walks through the whole process.
+- If no, that's fine. Mention they can do it anytime later with `/cothought:write-vision`.
 
 ## Finish
 
 Tell the user they're set up. Mention:
 - Config is at `~/.claude/cothought.json`
 - They can edit it anytime
-- Suggest trying `/journal` to start their first session
+- Suggest trying `/cothought:journal` to start their first session
 - If they didn't seed the metamap, mention that the journal skill will create one automatically from their first few sessions
-- If they skipped the vision, remind them `/write-vision` is there when they're ready
+- If they skipped the vision, remind them `/cothought:write-vision` is there when they're ready

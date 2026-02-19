@@ -1,0 +1,99 @@
+:root {
+  --bg: #f5f0e8;
+  --bg-deep: #ebe4d6;
+  --ink: #1a1a18;
+  --ink-light: #4a4a42;
+  --ink-faded: #8a8a7e;
+  --accent: #b85c38;
+  --accent-light: #d4875f;
+  --accent-glow: rgba(184, 92, 56, 0.12);
+  --rule: #c8c0b0;
+
+  --serif: 'Cormorant Garamond', 'Georgia', serif;
+  --mono: 'JetBrains Mono', 'Menlo', monospace;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+  --space-2xl: 12rem;
+
+  --content-width: 820px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 20px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+code:not(pre code) {
+  font-family: var(--mono);
+  font-size: 0.8em;
+  background: var(--bg-deep);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+}
+
+::selection {
+  background: var(--accent-glow);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-faded);
+}

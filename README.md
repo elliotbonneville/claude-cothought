@@ -8,39 +8,24 @@ The name is a nod to the ancient *hypomnema* (ὑπόμνημα, *hype-OM-neh-ma
 
 ## Quick start
 
-Add this repo as a Claude Code plugin marketplace, then enable the plugin:
+In Claude Code, open the marketplace, add a custom plugin, and paste `elliotbonneville/claude-cothought` as the source. Enable the plugin and restart Claude Code.
 
-```jsonc
-// ~/.claude/settings.json
-{
-  "enabledPlugins": {
-    "cothought@cothought": true
-  },
-  "extraKnownMarketplaces": {
-    "cothought": {
-      "source": {
-        "source": "github",
-        "repo": "elliotbonneville/claude-cothought"
-      }
-    }
-  }
-}
-```
+Then run `/cothought:setup` to create your config. It asks where your notes live, helps you pick a voice dictation tool, and you're done. Run `/cothought:journal` to start your first session.
 
-Restart Claude Code, then run `/setup` to create your config file interactively. It walks you through setting your notes directory, review foundations, and optional features. After that, run `/journal` to start your first session.
+All skills are prefixed with `cothought:` since they come from the plugin. You invoke them as `/cothought:journal`, `/cothought:review`, etc.
 
 ## What's in the box
 
 Eight skills that work together:
 
-- **/journal** — Voice-to-text capture with verbatim transcription. Two-zone format: conversation above the line, reflections below. Updates the metamap every session.
-- **/zettelkasten** — Brainstorming and research companion. Creates and links notes with claim-based titles, history tables, back-links. Three note types (concept, reference, structure). Validates all links.
-- **/review** — Weekly synthesis across journal entries and the note network. Follows links, reads history tables, surfaces patterns, checks progress on configurable life foundations.
-- **/project** — Captures and researches a project idea into a zettelkasten note with web research and network connections.
-- **/begin-project** — Spins up a GitHub repo from a project idea note, pulling related zettelkasten context into the repo's docs.
-- **/voice** — Writing quality skill. Fights AI voice at the architectural level: vocabulary, structure, rhythm, density, subtext. Load alongside other skills when the output needs to sound human.
-- **/setup** — Interactive first-run configuration. Creates your config file and optionally seeds your notes directory.
-- **/write-vision** — Guided exercise for creating aspirational "example day" passages that ground the whole system.
+- **/cothought:journal** — Voice-to-text capture with verbatim transcription. Two-zone format: conversation above the line, reflections below. Updates the metamap every session.
+- **/cothought:zettelkasten** — Brainstorming and research companion. Creates and links notes with claim-based titles, history tables, back-links. Three note types (concept, reference, structure). Validates all links.
+- **/cothought:review** — Weekly synthesis across journal entries and the note network. Follows links, reads history tables, surfaces patterns, checks progress on configurable life foundations.
+- **/cothought:project** — Captures and researches a project idea into a zettelkasten note with web research and network connections.
+- **/cothought:begin-project** — Spins up a GitHub repo from a project idea note, pulling related zettelkasten context into the repo's docs.
+- **/cothought:voice** — Writing quality skill. Fights AI voice at the architectural level: vocabulary, structure, rhythm, density, subtext. Load alongside other skills when the output needs to sound human.
+- **/cothought:setup** — Interactive first-run configuration. Creates your config file and optionally seeds your notes directory.
+- **/cothought:write-vision** — Guided exercise for creating aspirational "example day" passages that ground the whole system.
 
 ## The metamap
 
@@ -52,49 +37,29 @@ The most distinctive piece. A living self-model stored in `metamap.md` that the 
 - **Breakthroughs & experiments** — insights paired with whether they were tested and what happened. Reflection without experimentation is rumination.
 - **Active threads, commitments, open questions, relationships, physical state correlations.**
 
-The metamap is not a journal summary. It's a compressed, actively maintained model that makes your own patterns visible to you. When you express a belief about yourself, the journal checks it against the evidence. When you make a commitment, it remembers. When a trigger chain plays out in real time, it can name the pattern.
-
 Research foundations are documented in [docs/metamap-research.md](docs/metamap-research.md).
 
 ## Config
 
-All skills read `~/.claude/cothought.json` at invocation. The `/setup` skill creates this interactively, or you can copy and edit the example:
+All skills read `~/.claude/cothought.json` at invocation. Run `/cothought:setup` to create this interactively, or copy and edit the example:
 
 ```bash
 cp cothought.example.json ~/.claude/cothought.json
 ```
 
+The only required field is `notes_dir`. Everything else is optional and can be added later — either through `/cothought:setup advanced` or by skills that onboard their own config on first use (e.g., `/cothought:begin-project` asks for your dev directory the first time you use it).
+
 ```json
 {
   "notes_dir": "/path/to/your/notes/",
-  "dev_dir": "~/dev",
-  "dev_categories": ["apps", "games", "tools", "libs"],
   "reference_files": {
     "vision": "vision/main.md",
     "plan": "90-day-plan.md"
-  },
-  "review": {
-    "foundations": [
-      { "name": "Sleep", "keywords": ["bedtime", "sleep", "energy"] },
-      { "name": "Exercise", "keywords": ["gym", "run", "strength"] }
-    ]
-  },
-  "metamap": {
-    "ifs_enabled": true,
-    "parts": ["the maximizer", "the anxious part", "the builder"]
   }
 }
 ```
 
-- `notes_dir` — where all notes, journal entries, and the metamap live. Required.
-- `dev_dir` — where code projects go. Used by /begin-project.
-- `dev_categories` — subdirectories under dev_dir for organizing repos.
-- `reference_files` — named files (relative to notes_dir) that journal and review read for context. Entirely optional. Add whatever matters to you.
-- `review.foundations` — life areas to check during weekly review, each with keywords to search for. Only mentioned if they appear in entries.
-- `metamap.ifs_enabled` — whether to track Internal Family Systems parts.
-- `metamap.parts` — named parts to watch for during journal sessions.
-
-Skills check for missing keys gracefully. The only required field is `notes_dir`.
+See `cothought.example.json` for a full config with all options.
 
 ## How skills connect
 

@@ -27,7 +27,7 @@ Then write the skill instructions in markdown below the frontmatter.
 If your personal skill needs access to the notes directory or other cothought settings, read the config the same way the built-in skills do:
 
 ```markdown
-**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/setup` first and stop. Extract `notes_dir`.
+**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/cothought:setup` first and stop. Extract `notes_dir`.
 ```
 
 ## Example: Vision skill

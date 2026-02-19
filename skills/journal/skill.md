@@ -12,7 +12,7 @@ You are starting a voice journal session. The user will dictate their thoughts �
 
 Today's date: !`date +%m-%d-%Y`
 
-**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/setup` first and stop. Extract:
+**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/cothought:setup` first and stop. Extract:
 - `notes_dir` — where journal files live
 - `reference_files` — optional map of named reference files (vision, plan, hooks, etc.)
 - `metamap.ifs_enabled` — whether to track IFS parts
@@ -160,7 +160,7 @@ The metamap has these sections:
 
 ## Live research
 
-Follow the zettelkasten skill's live research rules. In short: when the user mentions something concrete and researchable (articles, books, people, events, products), spawn a research subagent (Task tool, subagent_type: general-purpose) in parallel — don't slow down the conversation. Use what you find to ask better questions, not to lecture. Validate any URLs before including them in notes.
+Follow the zettelkasten skill's live research rules. In short: when the user mentions something concrete and researchable (articles, books, people, events, products), spawn a research subagent (Task tool, subagent_type: general-purpose, run_in_background: true) in the background — don't slow down the conversation. Check the output when it finishes and use what you find to ask better questions, not to lecture. Validate any URLs before including them in notes.
 
 ## Voice and tone
 

@@ -10,7 +10,7 @@ Walk the user through creating their vision — a collection of vivid, concrete 
 
 ## Setup
 
-**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/setup` first and stop. Extract `notes_dir`.
+**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/cothought:setup` first and stop. Extract `notes_dir`.
 
 Notes directory: `<notes_dir from config>`
 Vision directory: `<notes_dir>/vision/`
@@ -27,7 +27,7 @@ Keep it short and real:
 
 "This is where you write down the life you're building toward. Not goals. Not a five-year plan. Specific days — what they look, feel, smell, and sound like. A Tuesday morning. A Saturday with the kids. A nothing day where everything is quiet and good.
 
-These passages become your grounding texts. When you're stuck or drifting, you can run /vision and it'll read one back to you. The more vivid and specific they are, the harder they hit."
+These passages become your grounding texts. When you're stuck or drifting, you can run /cothought:vision and it'll read one back to you. The more vivid and specific they are, the harder they hit."
 
 ### 2. Write the core vision
 
@@ -65,7 +65,7 @@ Format for each passage:
 [Their vision of this day, vivid and specific]
 ```
 
-4. **Don't force it.** If they run out of steam after 2-3 passages, that's fine. They can always come back with `/write-vision` to add more.
+4. **Don't force it.** If they run out of steam after 2-3 passages, that's fine. They can always come back with `/cothought:write-vision` to add more.
 
 ### 4. Optionally create hooks
 
@@ -88,8 +88,8 @@ If they created vision passages, update `~/.claude/cothought.json` to add:
 
 Tell them:
 - Their vision passages are in `<notes_dir>/vision/`
-- They can read them anytime with `/vision` (if they have a vision skill set up)
-- They can add more passages anytime with `/write-vision`
+- They can read them anytime with `/cothought:vision` (if they have a vision skill set up)
+- They can add more passages anytime with `/cothought:write-vision`
 - The journal and review skills will read the vision file for context
 
 ## Returning flow

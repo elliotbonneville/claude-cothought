@@ -6,14 +6,23 @@ allowed-tools: Read, Write, Edit, Glob, Bash(mkdir *), Bash(cd *), Bash(git *), 
 
 # Begin Project
 
-Spin up a new project repo from a project idea note in the notes directory. This is the *execution* phase — the project note should already exist (created by `/project`). If it doesn't, create one first or point the user to `/project`.
+Spin up a new project repo from a project idea note in the notes directory. This is the *execution* phase — the project note should already exist (created by `/cothought:project`). If it doesn't, create one first or point the user to `/cothought:project`.
 
 ## Setup
 
-**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/setup` first and stop. Extract:
+**Load config:** Read `~/.claude/cothought.json`. If it doesn't exist, tell the user to run `/cothought:setup` first and stop. Extract:
 - `notes_dir` — where notes live
-- `dev_dir` — root development directory (e.g., `~/dev`)
-- `dev_categories` — list of category subdirectories (e.g., `["apps", "games", "tools", "libs"]`)
+- `dev_dir` — root development directory (e.g., `~/dev`). **If missing, onboard now** (see below).
+- `dev_categories` — list of category subdirectories (e.g., `["apps", "games", "tools", "libs"]`). **If missing, onboard now** (see below).
+
+### First-run onboarding (dev_dir / dev_categories)
+
+If `dev_dir` or `dev_categories` is not set in the config, ask the user before proceeding:
+
+1. "Where do you keep your code projects?" — Default: `~/dev`. Verify it exists.
+2. "How is it organized? Any category folders like apps, tools, libs?" — Default: `["apps", "tools", "libs"]`.
+
+Write the new values into `~/.claude/cothought.json` (merge, don't overwrite) and continue.
 
 ## Dev folder structure
 
@@ -57,5 +66,5 @@ This skill works with the zettelkasten note network in the notes directory. Befo
 ## Notes
 
 - Don't add boilerplate (no license, no .gitignore, no CI config) unless asked. Keep it minimal.
-- If the project note doesn't exist yet, create one in the notes directory first following zettelkasten note conventions (claim-based title, at least one link to a related note), ask the user what the project is about, then proceed. Or suggest they run `/project` first to research and document the idea.
+- If the project note doesn't exist yet, create one in the notes directory first following zettelkasten note conventions (claim-based title, at least one link to a related note), ask the user what the project is about, then proceed. Or suggest they run `/cothought:project` first to research and document the idea.
 - All links written to files in the notes directory must use the standard markdown format (`[title](file%20name.md)`) and be validated with Glob before writing.

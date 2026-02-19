@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    .page-back { fill: #c8c0b0; }
+    .page-front { fill: #1a1a18; }
+    .line { stroke: #f5f0e8; stroke-width: 1.2; stroke-linecap: round; }
+    @media (prefers-color-scheme: dark) {
+      .page-back { fill: #5a5a52; }
+      .page-front { fill: #e8e0d0; }
+      .line { stroke: #2b2b26; }
+    }
+  </style>
+  <!-- Back page, offset -->
+  <rect class="page-back" x="6" y="3" width="18" height="23" rx="2" />
+  <!-- Front page -->
+  <rect class="page-front" x="8" y="6" width="18" height="23" rx="2" />
+  <!-- Text lines on front page -->
+  <line class="line" x1="12" y1="12" x2="22" y2="12" />
+  <line class="line" x1="12" y1="16" x2="20" y2="16" />
+  <line class="line" x1="12" y1="20" x2="22" y2="20" />
+  <line class="line" x1="12" y1="24" x2="17" y2="24" />
+</svg>
