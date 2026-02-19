@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f5f0e8"/>
+
+  <!-- Top left: hypomnema in faded monospace italic -->
+  <text x="80" y="90" font-family="'Courier New', Courier, monospace" font-size="18" font-style="italic" fill="#a89b8c" letter-spacing="1">ὑπόμνημα</text>
+
+  <!-- Large serif title -->
+  <text x="80" y="310" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="normal" fill="#2c2824" letter-spacing="-1">Cothought</text>
+
+  <!-- Subtitle -->
+  <text x="84" y="370" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-style="italic" fill="#8b6b4a">The notebook that thinks back.</text>
+
+  <!-- Bottom right: domain -->
+  <text x="1120" y="580" font-family="'Courier New', Courier, monospace" font-size="16" fill="#a89b8c" text-anchor="end" letter-spacing="0.5">cothought.ai</text>
+</svg>
