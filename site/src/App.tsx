@@ -116,7 +116,7 @@ function App() {
       <section className="how" ref={howRef}>
         <div className="container">
           <p className="section-label reveal">How it works</p>
-          <h2 className="section-heading reveal reveal--delay-1">No magic</h2>
+          <h2 className="section-heading reveal reveal--delay-1">Markdown + intelligence</h2>
           <p className="how__text reveal reveal--delay-2">
             Claude Code is your text editor. You talk, it writes the files. There's no
             separate app, no special UI. You open a terminal, run a slash command, and
