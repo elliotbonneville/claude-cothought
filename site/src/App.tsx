@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import './App.css'
 
 function useReveal() {
@@ -56,7 +56,6 @@ const researchDomains = [
 ]
 
 function App() {
-  const [scrolled, setScrolled] = useState(false)
   const heroRef = useReveal()
   const originRef = useReveal()
   const howRef = useReveal()
@@ -66,35 +65,23 @@ function App() {
   const researchRef = useReveal()
   const demoRef = useReveal()
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
     <div className="page">
-      {/* Header */}
-      <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
-        <span className="header__name">Cothought</span>
-        <a className="header__github" href="https://github.com/elliotbonneville/claude-cothought">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-        </a>
-      </header>
+      <a className="github-link" href="https://github.com/elliotbonneville/claude-cothought">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
 
       {/* Hero */}
       <section className="hero" ref={heroRef}>
         <div className="container">
-          <div className="reveal">
-            <p className="hero__greek">ὑπόμνημα</p>
-          </div>
-          <h1 className="hero__title reveal reveal--delay-1">Cothought</h1>
-          <p className="hero__subtitle reveal reveal--delay-2">
-            A Claude Code plugin that turns a plain markdown folder into a thinking system.
-            Journal by voice. Link ideas into a zettelkasten. Maintain a living self-model
-            that thinks back.
+          <h1 className="hero__title reveal">Cothought</h1>
+          <p className="hero__tagline reveal reveal--delay-1">
+            A living journal that grows with you. Claude captures your words,
+            interlinks your ideas into a zettelkasten, and builds an external mind
+            — a map of who you are that deepens over months and years. Plain markdown,
+            inside Claude Code — yours forever.
           </p>
         </div>
         <div className="hero__scroll-hint">
@@ -161,61 +148,25 @@ function App() {
             <div className="install__step reveal reveal--delay-1">
               <span className="install__step-number">1</span>
               <div className="install__step-content">
-                <h3>Install the plugin</h3>
-                <p>
-                  In Claude Code, run <code>/plugins</code> and add a custom marketplace
-                  with the URL <code>elliotbonneville/claude-cothought</code>. Then
-                  install the cothought plugin from that marketplace.
-                </p>
+                <h3>Add the marketplace</h3>
+                <code className="install__command">/plugin marketplace add elliotbonneville/claude-cothought</code>
               </div>
             </div>
             <div className="install__step reveal reveal--delay-2">
               <span className="install__step-number">2</span>
               <div className="install__step-content">
-                <h3>Run setup</h3>
-                <p>
-                  Restart Claude Code and run <code>/cothought:setup</code>. It asks where
-                  your notes live, helps you pick a voice dictation tool, and you're done.
-                  Run <code>/cothought:setup advanced</code> later for review foundations,
-                  metamap options, and more.
-                </p>
+                <h3>Install the plugin</h3>
+                <code className="install__command">/plugin install cothought@elliotbonneville</code>
               </div>
             </div>
             <div className="install__step reveal reveal--delay-3">
               <span className="install__step-number">3</span>
               <div className="install__step-content">
-                <h3>Start journaling</h3>
-                <p>
-                  Run <code>/cothought:journal</code> to start your first session. Speak
-                  naturally — your words are captured exactly as spoken. The system builds
-                  around you over time.
-                </p>
+                <h3>Restart Claude Code and run setup</h3>
+                <code className="install__command">/cothought:setup</code>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Skills */}
-      <section className="skills" ref={skillsRef}>
-        <div className="container">
-          <p className="section-label reveal">What's in the box</p>
-          <h2 className="section-heading reveal reveal--delay-1">Eight skills, one system</h2>
-          <div className="skills__grid reveal reveal--delay-2">
-            {skills.map((skill) => (
-              <div className="skill-card" key={skill.name}>
-                <div className="skill-card__name">{skill.name}</div>
-                <div className="skill-card__description">{skill.description}</div>
-              </div>
-            ))}
-          </div>
-          <p className="skills__note reveal reveal--delay-3">
-            Every skill works on its own. Run <code>/cothought:zettelkasten</code> by
-            itself to brainstorm, or <code>/cothought:review</code> without ever
-            journaling. But they layer together — the journal loads zettelkasten rules
-            automatically, the review reads history tables the zettelkasten created, and
-            the metamap ties everything into one picture. Use one or use all eight.
-          </p>
         </div>
       </section>
 
@@ -256,17 +207,70 @@ function App() {
                   dominant story
                 </a>{' '}
                 is "writing is hard and I avoid it" but the actual evidence is "once I start,
-                it's meditative." That gap is worth tracking.
+                it's meditative." That's three sessions now where the counter-evidence
+                contradicts the story.
+              </div>
+              <div className="demo__entry">
+                <span className="demo__timestamp">9:38PM</span>{' '}
+                Yeah. I also noticed I slept terribly last night and that's probably part of
+                why everything feels hard today. When I'm tired I default to "nothing is
+                working."
+              </div>
+              <div className="demo__blockquote">
+                That matches a{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  physical correlation
+                </a>{' '}
+                from your metamap — poor sleep has preceded this "everything is broken"
+                feeling in four of the last six instances. The{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  pattern
+                </a>:{' '}
+                bad sleep → catastrophic framing → avoidance → guilt. Worth noting
+                that you caught it this time.
+              </div>
+              <div className="demo__entry">
+                <span className="demo__timestamp">9:42PM</span>{' '}
+                That's actually kind of encouraging. Last week I said I wanted to try writing
+                for just ten minutes when the resistance hits instead of waiting for
+                motivation. I haven't tried it yet.
+              </div>
+              <div className="demo__blockquote">
+                You committed to that on Friday — it's still in your{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  active threads
+                </a>
+                . The{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  breakthrough
+                </a>{' '}
+                was "resistance is not a signal to stop, it's the first twenty minutes."
+                You haven't tested it yet. Want to make that the experiment for this week?
               </div>
               <hr className="demo__rule" />
               <p className="demo__reflection">
-                Session touched the novel thread again — third time this week. The
-                resistance-vs-reality gap around writing is a textbook dominant story
-                contradiction. Added counter-evidence to the metamap. The pattern: he
-                remembers the dread but not the flow. Created zettelkasten note:{' '}
+                Novel thread — fourth time this week, now an{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  active thread
+                </a>
+                . Added counter-evidence to{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  "I'm someone who avoids hard things"
+                </a>{' '}
+                dominant story. Logged sleep → catastrophic framing{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  pattern
+                </a>{' '}
+                recurrence (5th instance). Friday's ten-minute experiment still untested
+                — carried forward. Created zettelkasten note:{' '}
                 <a href="#" onClick={(e) => e.preventDefault()}>
                   Resistance memory is stronger than flow memory
-                </a>.
+                </a>
+                . Linked to{' '}
+                <a href="#" onClick={(e) => e.preventDefault()}>
+                  Motivation follows action, not the reverse
+                </a>
+                .
               </p>
             </div>
           </div>
@@ -322,6 +326,29 @@ function App() {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className="skills" ref={skillsRef}>
+        <div className="container">
+          <p className="section-label reveal">What's in the box</p>
+          <h2 className="section-heading reveal reveal--delay-1">Eight skills, one system</h2>
+          <div className="skills__grid reveal reveal--delay-2">
+            {skills.map((skill) => (
+              <div className="skill-card" key={skill.name}>
+                <div className="skill-card__name">{skill.name}</div>
+                <div className="skill-card__description">{skill.description}</div>
+              </div>
+            ))}
+          </div>
+          <p className="skills__note reveal reveal--delay-3">
+            Every skill works on its own. Run <code>/cothought:zettelkasten</code> by
+            itself to brainstorm, or <code>/cothought:review</code> without ever
+            journaling. But they layer together — the journal loads zettelkasten rules
+            automatically, the review reads history tables the zettelkasten created, and
+            the metamap ties everything into one picture. Use one or use all eight.
+          </p>
         </div>
       </section>
 
